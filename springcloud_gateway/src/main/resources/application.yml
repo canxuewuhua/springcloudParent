@@ -1,0 +1,26 @@
+server:
+  port: 8091
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+      discovery:
+        server-addr: ${spring.cloud.nacos.server-addr}
+    gateway:
+      routes:
+        - id: users_route
+          uri: lb://users
+          predicates:
+            - Path=/user/**
+        - id: emps_route
+          uri: lb://emps
+          predicates:
+            - Path=/emp/**
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
