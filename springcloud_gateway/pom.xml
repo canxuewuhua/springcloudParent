@@ -24,6 +24,8 @@
 			<artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
 		</dependency>
 
+		<!-- gateway基于spring webFlux 所以引入网关不能再引用web包 spring-boot-starter-web -->
+
 		<!--引入 spring cloud gateway-->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -31,10 +33,18 @@
 		</dependency>
 
 
-		<!--actuator -->
+		<!--actuator 因为要暴露端点 所以需要actuator依赖-->
+		<!--如果想要查看服务路由规则可以在配置文件中开启所有web端点暴露 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+		<!--引入lombok-->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
 		</dependency>
 	</dependencies>
 

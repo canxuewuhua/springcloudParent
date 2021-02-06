@@ -19,6 +19,10 @@ spring:
           uri: lb://emps
           predicates:
             - Path=/emp/**
+            - After=2021-02-06T04:38:40.549+08:00[Asia/Shanghai]
+      discovery:
+        locator:
+          enabled: true                            #开启根据服务名动态获取路由
 management:
   endpoints:
     web:
